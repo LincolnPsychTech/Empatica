@@ -13,11 +13,11 @@ if contains(rawdev, 'Empatica_E4')
     else % If connection was unsuccessful
         error(['Could not disconnect from Empatica E4 device, response received was: ' outcome]) % Report failure
     end
-elseif contains(rawdev, 'E4_') % If reply is subscription data
-    epunsubscribe(sock, 'acc', 'bvp', 'gsr', 'ibi', 'tmp', 'tag'); % Unsubscribe
-    disp('Device was still subscribed to feeds. Device has now been unsubscribed, please try disconnecting again.'); % Prompt user to try again
-else % If data is valid
-    error(['Could not disconnect device, data received: ' rawdev]); % Throw error
+elseif contains(rawdev, 'E4_') % If reply contains 
+    epunsubscribe(sock, 'acc', 'bvp', 'gsr', 'ibi', 'tmp', 'tag')
+    disp('Device was still subscribed to feeds. Device has now been unsubscribed, please try disconnecting again.');
+else
+    error(['Could not disconnect device, data received: ' rawdev]);
 end
 
 
