@@ -4,7 +4,7 @@ if strcmp(sock.Status, 'closed')
 end
 try
     raw = fscanf(sock); % Get data back from socket
-    val = raw
+    val = raw;
 catch % If request fails...
     val = NaN; % Set value to NaN
     warning('Could not get value from sensor.') % Issue warning
